@@ -8,6 +8,15 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
+def has_args(iterable, args):
+    """Verify that all args are in the iterable."""
+
+    try:
+        return all(x in iterable for x in args)
+
+    except TypeError:
+        return False
+
 @app.route("/", methods=["GET"])
 def ping():
     return "Jarvis, start the engines."
